@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Markovic | Digital Assets Portfolio Manager | Track Record 35%</title>
+    <meta name="description" content="Digital Assets Portfolio Manager with 35% track record PnL. Institutional-grade risk management, OTC execution, HNWI portfolio management.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #000000; color: #e5e5e5; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .terminal-green { color: #00ff88; }
+        .terminal-red { color: #ff3366; }
+        .terminal-amber { color: #ffb800; }
+        .terminal-blue { color: #00d4ff; }
+        .bg-terminal { background-color: #0a0a0a; }
+        .bg-terminal-dark { background-color: #050505; }
+        .bg-card { background-color: #111111; }
+        .border-terminal { border-color: #222222; }
+        .ticker-wrap { overflow: hidden; white-space: nowrap; }
+        .ticker { display: inline-block; animation: ticker 30s linear infinite; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .grid-cells { background-image: linear-gradient(rgba(34,34,34,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(34,34,34,0.3) 1px, transparent 1px); background-size: 50px 50px; }
+        .stat-card { background: linear-gradient(135deg, rgba(17,17,17,0.9) 0%, rgba(10,10,10,0.9) 100%); border: 1px solid #222; position: relative; }
+        .stat-card::before { content: ''; position: absolute; top:0; left:0; right:0; height:1px; background: linear-gradient(90deg, transparent, #00ff88, transparent); opacity:0.5; }
+        .nav-blur { backdrop-filter: blur(20px); background: rgba(0,0,0,0.9); border-bottom: 1px solid #222; }
+        .reveal { opacity:0; transform:translateY(20px); transition:all 0.6s ease; }
+        .reveal.active { opacity:1; transform:translateY(0); }
+        .data-table { border-collapse:collapse; }
+        .data-table th { background:#111; border-bottom:2px solid #333; font-weight:600; text-transform:uppercase; font-size:0.75rem; letter-spacing:0.05em; }
+        .data-table td { border-bottom:1px solid #1a1a1a; }
+        .data-table tr:hover td { background:rgba(34,34,34,0.5); }
+        .blink { animation:blink 1s infinite; }
+        @keyframes blink { 0%,50% { opacity:1; } 51%,100% { opacity:0; } }
+        .gradient-text { background:linear-gradient(135deg, #00ff88 0%, #00d4ff 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    </style>
+</head>
+<body class="antialiased bg-black text-gray-300">
+
+    <!-- Top Ticker -->
+    <div class="bg-terminal-dark border-b border-terminal py-2 overflow-hidden">
+        <div class="ticker-wrap">
+            <div class="ticker font-mono text-xs">
+                <span class="mx-4">BTC/USD <span class="terminal-red">-2.2%</span> $66,200</span>
+                <span class="mx-4">ETH/USD <span class="terminal-red">-2.8%</span> $1,940</span>
+                <span class="mx-4">SOL/USD <span class="terminal-red">-4.8%</span> $81.20</span>
+                <span class="mx-4">FUNDING: BTC <span class="terminal-red">-0.008%</span> ETH <span class="terminal-red">-0.010%</span></span>
+                <span class="mx-4 text-gray-500">|</span>
+                <span class="mx-4">VIX <span class="terminal-amber">19.2</span></span>
+                <span class="mx-4">DXY <span class="terminal-green">105.1</span></span>
+                <span class="mx-4">GOLD <span class="terminal-green">+0.9%</span></span>
+                <span class="mx-4 text-gray-500">|</span>
+                <span class="mx-4">24H VOL: <span class="terminal-blue">$82B</span></span>
+                <span class="mx-4">OI: <span class="terminal-blue">$27B</span></span>
+                <span class="mx-4">LIQ: <span class="terminal-red">$195M</span></span>
+                <span class="mx-4 text-gray-500">|</span>
+                <span class="mx-4">BTC/USD <span class="terminal-red">-2.2%</span> $66,200</span>
+                <span class="mx-4">ETH/USD <span class="terminal-red">-2.8%</span> $1,940</span>
+                <span class="mx-4">SOL/USD <span class="terminal-red">-4.8%</span> $81.20</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-8 w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-terminal-green rounded flex items-center justify-center font-mono font-bold text-black text-sm">DM</div>
+                    <div>
+                        <span class="text-lg font-bold tracking-wider">MARKOVIC</span>
+                        <span class="text-xs text-gray-500 block font-mono">DIGITAL ASSETS PM</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8 font-mono text-sm">
+                    <a href="#performance" class="hover:text-terminal-green transition">TRACK_RECORD</a>
+                    <a href="#strategy" class="hover:text-terminal-green transition">STRATEGY</a>
+                    <a href="#experience" class="hover:text-terminal-green transition">EXPERIENCE</a>
+                    <a href="#risk" class="hover:text-terminal-green transition">RISK_MGMT</a>
+                    <a href="#contact" class="hover:text-terminal-green transition">CONTACT</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="flex items-center text-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-green-500 blink mr-2"></span>
+                        LIVE
+                    </span>
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 border border-terminal rounded">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-terminal">
+            <div class="px-4 py-4 space-y-2 font-mono text-sm">
+                <a href="#performance" class="block py-2 hover:text-terminal-green">TRACK_RECORD</a>
+                <a href="#strategy" class="block py-2 hover:text-terminal-green">STRATEGY</a>
+                <a href="#experience" class="block py-2 hover:text-terminal-green">EXPERIENCE</a>
+                <a href="#risk" class="block py-2 hover:text-terminal-green">RISK_MGMT</a>
+                <a href="#contact" class="block py-2 hover:text-terminal-green">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-24 pb-12 grid-cells">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Left Column: Identity -->
+                <div class="lg:col-span-5 reveal">
+                    <div class="border-l-2 border-terminal-green pl-6 mb-8">
+                        <p class="font-mono text-sm text-gray-500 mb-2">PORTFOLIO_MANAGER_ID: DM-2026</p>
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight text-white">
+                            DAVID<br>
+                            <span class="gradient-text">MARKOVIC</span>
+                        </h1>
+                        <p class="text-lg text-gray-400 mb-6">Digital Assets Portfolio Management<br>OTC Execution • HNWI Advisory • Risk Framework</p>
+                        
+                        <div class="flex items-center space-x-4 font-mono text-xs">
+                            <span class="px-3 py-1 bg-terminal rounded border border-terminal">BASE: MUNICH_DE</span>
+                            <span class="px-3 py-1 bg-terminal rounded border border-terminal">STATUS: ACTIVE</span>
+                            <span class="px-3 py-1 bg-terminal rounded border border-terminal">AVAIL: IMMEDIATE</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="stat-card p-4 rounded">
+                            <div class="text-xs text-gray-500 font-mono mb-1">AUM_MANAGED</div>
+                            <div class="text-2xl font-bold font-mono text-white">$12.4M</div>
+                            <div class="text-xs terminal-green">▲ 35% YTD</div>
+                        </div>
+                        <div class="stat-card p-4 rounded">
+                            <div class="text-xs text-gray-500 font-mono mb-1">SHARPE_RATIO</div>
+                            <div class="text-2xl font-bold font-mono text-white">2.4</div>
+                            <div class="text-xs terminal-green">▲ 0.3 vs Benchmark</div>
+                        </div>
+                    </div>
+
+                    <div class="flex space-x-4">
+                        <a href="#performance" class="flex-1 py-3 px-6 bg-terminal-green text-black font-mono font-bold text-sm rounded hover:bg-green-400 transition text-center">
+                            VIEW_TRACK_RECORD →
+                        </a>
+                        <a href="#contact" class="flex-1 py-3 px-6 border border-terminal hover:border-terminal-green font-mono text-sm rounded transition text-center">
+                            REQUEST_AUDIT
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Performance Dashboard -->
+                <div class="lg:col-span-7 reveal">
+                    <div class="bg-card border border-terminal rounded-lg overflow-hidden">
+                        <div class="bg-terminal-dark px-6 py-3 border-b border-terminal flex justify-between items-center">
+                            <span class="font-mono text-sm font-bold">LIVE_PERFORMANCE_DASHBOARD</span>
+                            <div class="flex space-x-4 font-mono text-xs">
+                                <span class="text-gray-500">UPDATED: <span class="text-terminal-green">NOW UTC</span></span>
+                                <span class="text-gray-500">FREQ: <span class="terminal-amber">REALTIME</span></span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 md:grid-cols-4 border-b border-terminal">
+                            <div class="p-4 border-r border-terminal">
+                                <div class="text-xs text-gray-500 font-mono mb-1">TOTAL_RETURN</div>
+                                <div class="text-3xl font-bold font-mono terminal-green">+35.2%</div>
+                                <div class="text-xs text-gray-500">Since Inception</div>
+                            </div>
+                            <div class="p-4 border-r border-terminal">
+                                <div class="text-xs text-gray-500 font-mono mb-1">MAX_DRAWDOWN</div>
+                                <div class="text-3xl font-bold font-mono terminal-red">-7.8%</div>
+                                <div class="text-xs text-gray-500">Cap: 8%</div>
+                            </div>
+                            <div class="p-4 border-r border-terminal">
+                                <div class="text-xs text-gray-500 font-mono mb-1">WIN_RATE</div>
+                                <div class="text-3xl font-bold font-mono text-white">68.4%</div>
+                                <div class="text-xs text-gray-500">n=247 trades</div>
+                            </div>
+                            <div class="p-4">
+                                <div class="text-xs text-gray-500 font-mono mb-1">AVG_MONTHLY</div>
+                                <div class="text-3xl font-bold font-mono terminal-green">+2.9%</div>
+                                <div class="text-xs text-gray-500">Compounded</div>
+                            </div>
+                        </div>
+
+                        <!-- Equity Curve 2025 – volles Jahr -->
+                        <div class="p-6 border-b border-terminal">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="font-mono text-sm font-bold">EQUITY_CURVE_2025</span>
+                                <div class="flex space-x-2 text-xs font-mono">
+                                    <span class="px-2 py-1 bg-terminal rounded">1M</span>
+                                    <span class="px-2 py-1 bg-terminal rounded">3M</span>
+                                    <span class="px-2 py-1 bg-terminal-green text-black rounded">YTD</span>
+                                    <span class="px-2 py-1 bg-terminal rounded">ALL</span>
+                                </div>
+                            </div>
+                            
+                            <div class="h-40 flex items-end space-x-1">
+                                <div class="flex-1 bg-terminal hover:bg-gray-800 transition relative group" style="height: 35%">
+                                    <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-xs px-2 py-1 rounded font-mono">JAN: +2%</div>
+                                </div>
+                                <div class="flex-1 bg-terminal hover:bg-gray-800 transition relative group" style="height: 50%">
+                                    <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-xs px-2 py-1 rounded font-mono">FEB: +4%</div>
+                                </div>
+                                <div class="flex-1 bg-terminal hover:bg-gray-800 transition relative group" style="height: 65%">
+                                    <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-xs px-2 py-1 rounded font-mono">MAR: +6%</div>
+                                </div>
+                                <div class="flex-1 bg-terminal hover:bg-gray-800 transition relative group" style="height: 55%">
+                                    <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-xs px-2 py-1 rounded font-mono">APR: +3%</div>
+                                </div>
+                                <div class="flex-1 bg-terminal hover:bg-gray-800 transition relative group" style="height: 75%">
+                                    <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-xs px-2 py-1 rounded font-mono">MAY: +7%</div>
+                                </div>
+                                <div class="flex-1 bg-terminal hover:bg-gray-800 transition relative group" style="height: 90%">
+                                    <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-xs px-2 py-1 rounded font-mono">JUN: +8%</div>
+                                </div>
+                                <div class="flex-1 bg-terminal hover:bg-gray-800 transition relative group" style="height: 100%">
+                                    <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-xs px-2 py-1 rounded font-mono">JUL: +9%</div>
+                                </div>
+                                <div class="flex-1 bg-terminal hover:bg-gray-800 transition relative group" style="height: 85%">
+                                    <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-xs px-2 py-1 rounded font-mono">AUG: +5%</div>
+                                </div>
+                                <div class="flex-1 bg-terminal hover:bg-gray-800 transition relative group" style="height: 70%">
+                                    <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-xs px-2 py-1 rounded font-mono">SEP: +4%</div>
+                                </div>
+                                <div class="flex-1 bg-terminal hover:bg-gray-800 transition relative group" style="height: 80%">
+                                    <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-xs px-2 py-1 rounded font-mono">OCT: +6%</div>
+                                </div>
+                                <div class="flex-1 bg-terminal hover:bg-gray-800 transition relative group" style="height: 75%">
+                                    <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-xs px-2 py-1 rounded font-mono">NOV: +3%</div>
+                                </div>
+                                <div class="flex-1 bg-terminal hover:bg-gray-800 transition relative group" style="height: 90%">
+                                    <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-xs px-2 py-1 rounded font-mono">DEC: +5%</div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between text-xs font-mono text-gray-500 mt-2 px-1">
+                                <span>JAN</span><span>FEB</span><span>MAR</span><span>APR</span><span>MAY</span><span>JUN</span><span>JUL</span><span>AUG</span><span>SEP</span><span>OCT</span><span>NOV</span><span>DEC</span>
+                            </div>
+                        </div>
+
+                        <!-- Current Allocation -->
+                        <div class="p-6">
+                            <span class="font-mono text-sm font-bold block mb-4">CURRENT_ALLOCATION</span>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between text-sm font-mono">
+                                    <span class="w-20">BTC</span>
+                                    <div class="flex-1 mx-4 h-2 bg-terminal rounded-full overflow-hidden"><div class="h-full bg-orange-500" style="width:35%"></div></div>
+                                    <span class="w-12 text-right">35%</span>
+                                </div>
+                                <div class="flex items-center justify-between text-sm font-mono">
+                                    <span class="w-20">ETH</span>
+                                    <div class="flex-1 mx-4 h-2 bg-terminal rounded-full overflow-hidden"><div class="h-full bg-blue-500" style="width:25%"></div></div>
+                                    <span class="w-12 text-right">25%</span>
+                                </div>
+                                <div class="flex items-center justify-between text-sm font-mono">
+                                    <span class="w-20">SOL</span>
+                                    <div class="flex-1 mx-4 h-2 bg-terminal rounded-full overflow-hidden"><div class="h-full bg-purple-500" style="width:15%"></div></div>
+                                    <span class="w-12 text-right">15%</span>
+                                </div>
+                                <div class="flex items-center justify-between text-sm font-mono">
+                                    <span class="w-20">STABLE</span>
+                                    <div class="flex-1 mx-4 h-2 bg-terminal rounded-full overflow-hidden"><div class="h-full bg-gray-500" style="width:15%"></div></div>
+                                    <span class="w-12 text-right">15%</span>
+                                </div>
+                                <div class="flex items-center justify-between text-sm font-mono">
+                                    <span class="w-20">DEFI</span>
+                                    <div class="flex-1 mx-4 h-2 bg-terminal rounded-full overflow-hidden"><div class="h-full bg-green-500" style="width:10%"></div></div>
+                                    <span class="w-12 text-right">10%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Section -->
+    <section id="performance" class="py-20 bg-terminal-dark border-t border-terminal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 reveal">
+                <div class="flex items-center space-x-4 mb-4">
+                    <span class="font-mono text-xs px-3 py-1 bg-terminal rounded border border-terminal">SECTION_01</span>
+                    <h2 class="text-3xl font-bold text-white">PERFORMANCE_REPORT</h2>
+                </div>
+                <p class="text-gray-400 font-mono text-sm">Track record and historical performance metrics across all market cycles</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <div class="lg:col-span-2 reveal">
+                    <div class="bg-card border border-terminal rounded-lg overflow-hidden">
+                        <div class="px-6 py-4 border-b border-terminal flex justify-between items-center">
+                            <span class="font-mono text-sm font-bold">HISTORICAL_PERFORMANCE</span>
+                            <span class="text-xs text-gray-500 font-mono">2017 - PRESENT</span>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full data-table font-mono text-sm">
+                                <thead>
+                                    <tr class="text-left text-gray-500">
+                                        <th class="px-6 py-3">PERIOD</th>
+                                        <th class="px-6 py-3 text-right">RETURN</th>
+                                        <th class="px-6 py-3 text-right">BENCHMARK</th>
+                                        <th class="px-6 py-3 text-right">ALPHA</th>
+                                        <th class="px-6 py-3 text-right">MAX_DD</th>
+                                        <th class="px-6 py-3 text-right">SHARPE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="px-6 py-4 font-medium">2026 YTD</td>
+                                        <td class="px-6 py-4 text-right terminal-red font-bold">-8.0%</td>
+                                        <td class="px-6 py-4 text-right terminal-red">-15.2%</td>
+                                        <td class="px-6 py-4 text-right terminal-green">+7.2%</td>
+                                        <td class="px-6 py-4 text-right terminal-red">-7.8%</td>
+                                        <td class="px-6 py-4 text-right">1.8</td>
+                                    </tr>
+                                    <tr class="bg-terminal/50">
+                                        <td class="px-6 py-4 font-medium">2025</td>
+                                        <td class="px-6 py-4 text-right terminal-green font-bold">+35.2%</td>
+                                        <td class="px-6 py-4 text-right text-gray-400">+12.4%</td>
+                                        <td class="px-6 py-4 text-right terminal-green">+22.8%</td>
+                                        <td class="px-6 py-4 text-right terminal-red">-7.8%</td>
+                                        <td class="px-6 py-4 text-right">2.4</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 font-medium">2024</td>
+                                        <td class="px-6 py-4 text-right terminal-green font-bold">+45.8%</td>
+                                        <td class="px-6 py-4 text-right text-gray-400">+25.6%</td>
+                                        <td class="px-6 py-4 text-right terminal-green">+20.2%</td>
+                                        <td class="px-6 py-4 text-right terminal-red">-6.5%</td>
+                                        <td class="px-6 py-4 text-right">2.3</td>
+                                    </tr>
+                                    <tr class="bg-terminal/50">
+                                        <td class="px-6 py-4 font-medium">2023</td>
+                                        <td class="px-6 py-4 text-right terminal-green font-bold">+28.6%</td>
+                                        <td class="px-6 py-4 text-right text-gray-400">+8.2%</td>
+                                        <td class="px-6 py-4 text-right terminal-green">+20.4%</td>
+                                        <td class="px-6 py-4 text-right terminal-red">-6.2%</td>
+                                        <td class="px-6 py-4 text-right">2.1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 font-medium">2022 (Bear)</td>
+                                        <td class="px-6 py-4 text-right terminal-green font-bold">+8.4%</td>
+                                        <td class="px-6 py-4 text-right terminal-red">-64.0%</td>
+                                        <td class="px-6 py-4 text-right terminal-green">+72.4%</td>
+                                        <td class="px-6 py-4 text-right terminal-red">-8.0%</td>
+                                        <td class="px-6 py-4 text-right">1.8</td>
+                                    </tr>
+                                    <tr class="bg-terminal/50">
+                                        <td class="px-6 py-4 font-medium">2021 (Bull)</td>
+                                        <td class="px-6 py-4 text-right terminal-green font-bold">+142.0%</td>
+                                        <td class="px-6 py-4 text-right text-gray-400">+60.0%</td>
+                                        <td class="px-6 py-4 text-right terminal-green">+82.0%</td>
+                                        <td class="px-6 py-4 text-right terminal-red">-15.0%</td>
+                                        <td class="px-6 py-4 text-right">3.2</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 font-medium">2020</td>
+                                        <td class="px-6 py-4 text-right terminal-green font-bold">+45.0%</td>
+                                        <td class="px-6 py-4 text-right text-gray-400">+30.0%</td>
+                                        <td class="px-6 py-4 text-right terminal-green">+15.0%</td>
+                                        <td class="px-6 py-4 text-right terminal-red">-12.0%</td>
+                                        <td class="px-6 py-4 text-right">2.0</td>
+                                    </tr>
+                                    <tr class="bg-terminal/50">
+                                        <td class="px-6 py-4 font-medium">2019</td>
+                                        <td class="px-6 py-4 text-right terminal-green font-bold">+42.0%</td>
+                                        <td class="px-6 py-4 text-right text-gray-400">+18.0%</td>
+                                        <td class="px-6 py-4 text-right terminal-green">+24.0%</td>
+                                        <td class="px-6 py-4 text-right terminal-red">-15.0%</td>
+                                        <td class="px-6 py-4 text-right">1.9</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 font-medium">2018</td>
+                                        <td class="px-6 py-4 text-right terminal-red font-bold">-18.0%</td>
+                                        <td class="px-6 py-4 text-right terminal-red">-70.0%</td>
+                                        <td class="px-6 py-4 text-right terminal-green">+52.0%</td>
+                                        <td class="px-6 py-4 text-right terminal-red">-22.0%</td>
+                                        <td class="px-6 py-4 text-right">1.2</td>
+                                    </tr>
+                                    <tr class="bg-terminal/50">
+                                        <td class="px-6 py-4 font-medium">2017 (Mania)</td>
+                                        <td class="px-6 py-4 text-right terminal-green font-bold">+1300%</td>
+                                        <td class="px-6 py-4 text-right text-gray-400">+1100%</td>
+                                        <td class="px-6 py-4 text-right terminal-green">+200%</td>
+                                        <td class="px-6 py-4 text-right terminal-red">-50.0%</td>
+                                        <td class="px-6 py-4 text-right">3.5</td>
+                                    </tr>
+                                    <tr class="bg-terminal/50 border-t-2 border-terminal">
+                                        <td class="px-6 py-4 font-bold text-white">COMPOUNDED</td>
+                                        <td class="px-6 py-4 text-right terminal-green font-bold">+1,847%</td>
+                                        <td class="px-6 py-4 text-right text-gray-400">+320%</td>
+                                        <td class="px-6 py-4 text-right terminal-green">+1,527%</td>
+                                        <td class="px-6 py-4 text-right text-gray-400">-</td>
+                                        <td class="px-6 py-4 text-right text-gray-400">2.3 AVG</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Side Stats -->
+                <div class="space-y-6 reveal">
+                    <div class="bg-card border border-terminal rounded-lg p-6">
+                        <h3 class="font-mono text-sm font-bold mb-4 text-white">TRADE_STATISTICS</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center border-b border-terminal pb-2">
+                                <span class="text-sm text-gray-400">Total Trades</span>
+                                <span class="font-mono font-bold">1,247</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-terminal pb-2">
+                                <span class="text-sm text-gray-400">Win Rate</span>
+                                <span class="font-mono font-bold terminal-green">68.4%</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-terminal pb-2">
+                                <span class="text-sm text-gray-400">Avg Win</span>
+                                <span class="font-mono font-bold terminal-green">+12.4%</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-terminal pb-2">
+                                <span class="text-sm text-gray-400">Avg Loss</span>
+                                <span class="font-mono font-bold terminal-red">-3.2%</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-terminal pb-2">
+                                <span class="text-sm text-gray-400">Profit Factor</span>
+                                <span class="font-mono font-bold">3.8</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-400">Expectancy</span>
+                                <span class="font-mono font-bold terminal-green">+2.4R</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-card border border-terminal rounded-lg p-6">
+                        <h3 class="font-mono text-sm font-bold mb-4 text-white">RISK_METRICS</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-400">Sortino Ratio</span>
+                                <span class="font-mono font-bold">3.2</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-400">Calmar Ratio</span>
+                                <span class="font-mono font-bold">4.5</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-400">Beta (vs BTC)</span>
+                                <span class="font-mono font-bold">0.4</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-400">Correlation</span>
+                                <span class="font-mono font-bold">0.35</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategy Section -->
+    <section id="strategy" class="py-20 bg-black border-t border-terminal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 reveal">
+                <div class="flex items-center space-x-4 mb-4">
+                    <span class="font-mono text-xs px-3 py-1 bg-terminal rounded border border-terminal">SECTION_02</span>
+                    <h2 class="text-3xl font-bold text-white">INVESTMENT_STRATEGY</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-card border border-terminal rounded-lg p-6 reveal hover:border-terminal-green transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-terminal-green">ALPHA_01</span>
+                        <i data-lucide="git-branch" class="w-5 h-5 text-gray-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Funding Rate Arbitrage</h3>
+                    <p class="text-sm text-gray-400 mb-4">Exploiting funding rate divergences across perpetual futures exchanges (Binance, Bybit, OKX, dYdX).</p>
+                    <div class="flex justify-between text-xs font-mono border-t border-terminal pt-4">
+                        <span class="text-gray-500">Exposure: Market Neutral</span>
+                        <span class="terminal-green">Sharpe: 4.2</span>
+                    </div>
+                </div>
+
+                <div class="bg-card border border-terminal rounded-lg p-6 reveal hover:border-terminal-green transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-terminal-green">ALPHA_02</span>
+                        <i data-lucide="activity" class="w-5 h-5 text-gray-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Basis Trading</h3>
+                    <p class="text-sm text-gray-400 mb-4">Cash-and-carry arbitrage between spot and futures markets. Capturing contango/backwardation premiums.</p>
+                    <div class="flex justify-between text-xs font-mono border-t border-terminal pt-4">
+                        <span class="text-gray-500">Exposure: Low Beta</span>
+                        <span class="terminal-green">Sharpe: 3.8</span>
+                    </div>
+                </div>
+
+                <div class="bg-card border border-terminal rounded-lg p-6 reveal hover:border-terminal-green transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-terminal-green">ALPHA_03</span>
+                        <i data-lucide="layers" class="w-5 h-5 text-gray-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Delta-Neutral Yield</h3>
+                    <p class="text-sm text-gray-400 mb-4">Hedged positions in DeFi protocols generating sustainable yield through lending and LP strategies.</p>
+                    <div class="flex justify-between text-xs font-mono border-t border-terminal pt-4">
+                        <span class="text-gray-500">Exposure: Delta Neutral</span>
+                        <span class="terminal-green">APY: 12-18%</span>
+                    </div>
+                </div>
+
+                <div class="bg-card border border-terminal rounded-lg p-6 reveal hover:border-terminal-green transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-terminal-amber">TACTICAL_01</span>
+                        <i data-lucide="trending-up" class="w-5 h-5 text-gray-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Trend Following</h3>
+                    <p class="text-sm text-gray-400 mb-4">Systematic long/short strategies using momentum indicators and on-chain flow analysis.</p>
+                    <div class="flex justify-between text-xs font-mono border-t border-terminal pt-4">
+                        <span class="text-gray-500">Exposure: Directional</span>
+                        <span class="terminal-amber">Win Rate: 62%</span>
+                    </div>
+                </div>
+
+                <div class="bg-card border border-terminal rounded-lg p-6 reveal hover:border-terminal-green transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-terminal-amber">TACTICAL_02</span>
+                        <i data-lucide="zap" class="w-5 h-5 text-gray-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Event-Driven</h3>
+                    <p class="text-sm text-gray-400 mb-4">Trading around network upgrades, ETF approvals, macro events, and protocol launches.</p>
+                    <div class="flex justify-between text-xs font-mono border-t border-terminal pt-4">
+                        <span class="text-gray-500">Exposure: Event Beta</span>
+                        <span class="terminal-amber">Avg Return: +18%</span>
+                    </div>
+                </div>
+
+                <div class="bg-card border border-terminal rounded-lg p-6 reveal hover:border-terminal-green transition">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-terminal-red">RISK_MGMT</span>
+                        <i data-lucide="shield" class="w-5 h-5 text-gray-500"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-white">Active Hedging</h3>
+                    <p class="text-sm text-gray-400 mb-4">Dynamic portfolio insurance using options and perpetual hedges to protect downside.</p>
+                    <div class="flex justify-between text-xs font-mono border-t border-terminal pt-4">
+                        <span class="text-gray-500">Exposure: Protective</span>
+                        <span class="terminal-green">Cost: 1.2%/yr</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-terminal-dark border-t border-terminal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 reveal">
+                <div class="flex items-center space-x-4 mb-4">
+                    <span class="font-mono text-xs px-3 py-1 bg-terminal rounded border border-terminal">SECTION_03</span>
+                    <h2 class="text-3xl font-bold text-white">PROFESSIONAL_EXPERIENCE</h2>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-card border border-terminal rounded-lg p-6 reveal hover:border-gray-600 transition">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Digital Assets Portfolio Manager</h3>
+                            <p class="text-terminal-green font-mono text-sm">Freelancer / HNWI Advisory</p>
+                        </div>
+                        <div class="mt-2 md:mt-0 text-right">
+                            <span class="font-mono text-sm text-gray-500">09/2023 – PRESENT</span>
+                            <span class="block text-xs text-terminal-green font-mono">AUM: $12.4M | Return: +35%</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-400">
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <span class="text-terminal-green mr-2">→</span>
+                                <span>Strategic portfolio allocation across spot, perps, and DeFi protocols</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-terminal-green mr-2">→</span>
+                                <span>24/7 execution monitoring with automated risk triggers</span>
+                            </li>
+                        </ul>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <span class="text-terminal-green mr-2">→</span>
+                                <span>OTC desk coordination for large block trades</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-terminal-green mr-2">→</span>
+                                <span>Wallet security architecture & multi-sig implementation</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-card border border-terminal rounded-lg p-6 reveal hover:border-gray-600 transition">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Trading Operator / Energy Trader</h3>
+                            <p class="text-gray-400 font-mono text-sm">BayWa r.e. Energy Trading GmbH</p>
+                        </div>
+                        <div class="mt-2 md:mt-0 text-right">
+                            <span class="font-mono text-sm text-gray-500">04/2022 – 08/2023</span>
+                            <span class="block text-xs text-gray-400 font-mono">Volume: 2.4 TWh | PnL: +€1.2M</span>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-400">
+                        <p class="mb-2">24/7 short-term proprietary trading on EPEX Spot and EEX Power Derivatives. Managed algorithmic trading infrastructure for renewable energy portfolios.</p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="px-2 py-1 bg-terminal rounded text-xs font-mono">Algorithmic Trading</span>
+                            <span class="px-2 py-1 bg-terminal rounded text-xs font-mono">VPP Management</span>
+                            <span class="px-2 py-1 bg-terminal rounded text-xs font-mono">BDEW Certified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-card border border-terminal rounded-lg p-6 reveal hover:border-gray-600 transition">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Market Operator</h3>
+                            <p class="text-gray-400 font-mono text-sm">EEX - European Energy Exchange AG</p>
+                        </div>
+                        <div class="mt-2 md:mt-0 text-right">
+                            <span class="font-mono text-sm text-gray-500">03/2020 – 04/2022</span>
+                        </div>
+                    </div>
+                    <div class="text-sm text-gray-400">
+                        <p>Trading platform operations and risk monitoring for power and gas derivatives. Direct exposure to institutional trading workflows and risk frameworks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Management Section -->
+    <section id="risk" class="py-20 bg-black border-t border-terminal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 reveal">
+                <div class="flex items-center space-x-4 mb-4">
+                    <span class="font-mono text-xs px-3 py-1 bg-terminal rounded border border-terminal-red text-terminal-red">CRITICAL</span>
+                    <h2 class="text-3xl font-bold text-white">RISK_FRAMEWORK</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-card border border-terminal rounded-lg p-6 text-center reveal">
+                    <div class="text-4xl font-bold font-mono terminal-red mb-2">5%</div>
+                    <div class="text-sm font-mono text-gray-400">MAX_POSITION_SIZE</div>
+                    <div class="text-xs text-gray-600 mt-2">Per trade limit</div>
+                </div>
+                <div class="bg-card border border-terminal rounded-lg p-6 text-center reveal">
+                    <div class="text-4xl font-bold font-mono terminal-red mb-2">8%</div>
+                    <div class="text-sm font-mono text-gray-400">MAX_DRAWDOWN</div>
+                    <div class="text-xs text-gray-600 mt-2">Portfolio hard stop</div>
+                </div>
+                <div class="bg-card border border-terminal rounded-lg p-6 text-center reveal">
+                    <div class="text-4xl font-bold font-mono terminal-amber mb-2">3x</div>
+                    <div class="text-sm font-mono text-gray-400">MAX_LEVERAGE</div>
+                    <div class="text-xs text-gray-600 mt-2">Perps only</div>
+                </div>
+                <div class="bg-card border border-terminal rounded-lg p-6 text-center reveal">
+                    <div class="text-4xl font-bold font-mono text-white mb-2">24/7</div>
+                    <div class="text-sm font-mono text-gray-400">MONITORING</div>
+                    <div class="text-xs text-gray-600 mt-2">Automated alerts</div>
+                </div>
+            </div>
+
+            <div class="bg-card border border-terminal rounded-lg p-8 reveal">
+                <h3 class="text-lg font-bold mb-6 text-white font-mono">RISK_PROTOCOLS</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="font-bold text-terminal-green mb-3 flex items-center">
+                            <i data-lucide="shield" class="w-4 h-4 mr-2"></i>
+                            Position Management
+                        </h4>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li>• Strict position sizing (Kelly Criterion modified)</li>
+                            <li>• Correlation checks across book</li>
+                            <li>• Liquidity assessment before entry</li>
+                            <li>• Slippage modeling for exits</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-terminal-amber mb-3 flex items-center">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 mr-2"></i>
+                            Liquidation Avoidance
+                        </h4>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li>• Margin buffer maintenance (150% min)</li>
+                            <li>• Cross-exchange margin monitoring</li>
+                            <li>• Automated deleveraging triggers</li>
+                            <li>• Insurance fund allocation</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-terminal-blue mb-3 flex items-center">
+                            <i data-lucide="activity" class="w-4 h-4 mr-2"></i>
+                            Hedging
+                        </h4>
+                        <ul class="space-y-2 text-sm text-gray-400">
+                            <li>• Dynamic delta hedging</li>
+                            <li>• Options protection (tail risk)</li>
+                            <li>• Cross-asset correlation hedging</li>
+                            <li>• Stablecoin diversification</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-terminal-dark border-t border-terminal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12 reveal">
+                    <span class="font-mono text-xs px-3 py-1 bg-terminal rounded border border-terminal mb-4 inline-block">SECTION_04</span>
+                    <h2 class="text-3xl font-bold text-white mb-4">CONTACT_INFORMATION</h2>
+                    <p class="text-gray-400 font-mono text-sm">Available for institutional roles, HNWI advisory, and fund management opportunities</p>
+                </div>
+
+                <div class="bg-card border border-terminal rounded-lg overflow-hidden reveal">
+                    <div class="px-6 py-4 border-b border-terminal bg-terminal-dark">
+                        <span class="font-mono text-sm font-bold">CONNECTION_DETAILS</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-terminal rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="mail" class="w-6 h-6 text-terminal-green"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-500 font-mono mb-1">EMAIL</div>
+                                    <div class="font-mono text-white">david.markovic20@gmail.com</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-terminal rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="phone" class="w-6 h-6 text-terminal-green"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-500 font-mono mb-1">DIRECT_LINE</div>
+                                    <div class="font-mono text-white">+49 175 2874377</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-terminal rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="map-pin" class="w-6 h-6 text-terminal-green"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-500 font-mono mb-1">LOCATION</div>
+                                    <div class="font-mono text-white">Munich, Germany</div>
+                                    <div class="text-xs text-gray-500 font-mono">Open to: Switzerland, Remote, Global</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-terminal rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="linkedin" class="w-6 h-6 text-terminal-green"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-500 font-mono mb-1">LINKEDIN</div>
+                                    <a href="https://www.linkedin.com/in/david-m-85a8b51b7/" target="_blank" class="font-mono text-terminal-green hover:underline">linkedin.com/in/david-m</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-terminal pt-8">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                                <div>
+                                    <div class="text-xs text-gray-500 font-mono mb-1">BASE_SALARY_EXPECTATION</div>
+                                    <div class="text-2xl font-bold font-mono text-white">$250k</div>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-500 font-mono mb-1">PERFORMANCE_BONUS</div>
+                                    <div class="text-2xl font-bold font-mono terminal-green">20-50%</div>
+                                    <div class="text-xs text-gray-500">of PnL generated</div>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-500 font-mono mb-1">AVAILABILITY</div>
+                                    <div class="text-2xl font-bold font-mono text-white">IMMEDIATE</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center reveal">
+                    <p class="text-xs text-gray-500 font-mono">
+                        <span class="terminal-green">✓</span> Full trade history available under NDA<br>
+                        <span class="terminal-green">✓</span> References available upon request<br>
+                        <span class="terminal-green">✓</span> Fluent in German, Serbian (native), English (C1)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-terminal py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                <div class="w-6 h-6 bg-terminal-green rounded flex items-center justify-center font-mono font-bold text-black text-xs">DM</div>
+                <span class="font-mono text-sm text-gray-500">MARKOVIC_DIGITAL_ASSETS</span>
+            </div>
+            <div class="text-xs text-gray-600 font-mono">
+                © 2026 DAVID MARKOVIC | SYSTEM_ID: DM-2024-OTC | LAST_UPDATE: 2026-01-15
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        function toggleMobileMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
